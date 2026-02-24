@@ -1,2 +1,0 @@
-Активация виртуального окружения в Windows (Command Prompt):
-.venv\Scripts\activate
