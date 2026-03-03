@@ -2,54 +2,59 @@ version: 2
 
 sources:
   - name: "scooters_raw"
-    description: "Raw data provided by scooters service"
+    description: "Сырые данные из сервиса проката самокатов"
     loader: "https://t.me/inzhenerka_dbt_bot"
     tables:
       - name: "trips"
-        description: "Scooter trips"
+        description: "Поездки на самокатах"
 
       - name: "users"
-        description: "Users of scooter service"
+        description: "Пользователи прокатного сервиса"
 
       - name: "events"
-        description: "Raw user events with duplicates"
+        description: "Сырые события пользователей с дубликатами"
 models:
   - name: "trips_prep"
-    description: "Trips prepared for analysis"
+    description: "Поездки, подготовленные для анализа"
     config:
       materialized: "view"
   - name: "trips_stat"
-    description: "Overall trips statistics"
+    description: "Статистика по поездкам"
   - name: "trips_stat_daily"
-    description: "Daily trips statistics"
+    description: "Дневная статистика по поездкам"
     config:
       indexes:
         - columns: ['date']
   - name: "trips_age_daily"
-    description: "Daily trips statistics by user age"
+    description: "Дневная статистика по поездкам по возрастам пользователей"
   - name: "trips_age_daily_stat"
-    description: "Aggregation of daily trips statistics by user age"
+    description: "Аггрегация дневной статистики поездок по возрастам пользователей"
   - name: "trips_geom"
-    description: "Trips prepared for geometry analysis"
+    description: "Поездки, подготовленные для геометрического анализа"
     config:
       materialized: "view"
   - name: "parking_start_stat"
-    description: "Trip start parking statistics by 500 m hexagons"
+    description: "Статистика начала поездок в 500 м гексагонах"
   - name: "parking_finish_stat"
-    description: "Trip finish parking statistics by 10 m hexagons"
+    description: "Статистика конца поездок в 500 м гексагонах"
   - name: "trips_users"
-    description: "Prepared trips enriched with users data"
+    description: "Подготовленные поездки, обогащенные данными пользователей"
     config:
       materialized: "incremental"      
   - name: "events_clean"
-    description: "User events without dublicates"
+    description: "События пользователей с дубликатами"
     config:
       materialized: "incremental"  
   - name: "revenue_daily"
-    description: "Summary daily revenue"  
+    description: "Суммарная дневная выручка"  
     config:
       materialized: "incremental"  
       incremental_strategy: "merge"
       unique_key: [ "date" ]  
       on_schema_change: "append_new_columns"
       full_refresh: false
+  - name: "trips_concurrency"
+    description: "Количество одновременных поездок"  
+    config:
+      materialized: "incremental"  
+
