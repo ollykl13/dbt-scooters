@@ -1,0 +1,7 @@
+version: 2
+
+seeds:
+  - name: "scooters"
+    description: "Статистика и информация по моделям самокатов"
+    config:
+      delimiter: ","
