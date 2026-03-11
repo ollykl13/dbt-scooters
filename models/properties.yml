@@ -61,4 +61,9 @@ models:
     description: "Статистика по производителям самокатов"  
   - name: "companies_trips"
     description: "Статистика поездок по производителям самокатов"  
-
+  - name: "events_full"
+    description: "События пользователей обогащенные названиями типов событий"
+    config:
+      materialized: "view"
+  - name: "events_stat"
+    description: "Статистика отказов пользователей"

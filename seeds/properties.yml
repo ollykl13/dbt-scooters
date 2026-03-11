@@ -5,3 +5,7 @@ seeds:
     description: "Статистика и информация по моделям самокатов"
     config:
       delimiter: ","
+  - name: "event_types"
+    description: "Типы событий"
+    config:
+      delimiter: ","      
