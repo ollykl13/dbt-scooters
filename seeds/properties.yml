@@ -9,3 +9,7 @@ seeds:
     description: "Типы событий"
     config:
       delimiter: ","      
+  - name: "age_groups"
+    description: "Возрастные группы для группировки пользователей для анализа"
+    config:
+      delimiter: ","            
