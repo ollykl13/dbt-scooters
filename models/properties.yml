@@ -69,3 +69,7 @@ models:
     description: "Статистика отказов пользователей"
   - name: "trips_age_group"
     description: "Статистика поездок по группам пользователей"
+  - name: "first_name_sex"
+    description: "Соответствие пола и имени пользователей"
+  - name: "users_full"
+    description: "Пользователи обогащенные полом"        

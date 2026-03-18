@@ -12,4 +12,8 @@ seeds:
   - name: "age_groups"
     description: "Возрастные группы для группировки пользователей для анализа"
     config:
-      delimiter: ","            
+      delimiter: ","  
+  - name: "first_name_sex_manual"
+    description: "Соответствие имени и пола пользователя (добавочный ручной справочник)"
+    config:
+      delimiter: ","                
