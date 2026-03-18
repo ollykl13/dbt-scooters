@@ -2,6 +2,7 @@ SELECT
 	t.*
 	,u.sex 
 	,date_part('year', age(t.date, u.birth_date)) AS age
+    ,{{ updated_at() }}
 FROM {{ ref("trips_prep") }} AS t
 	LEFT JOIN {{ source("scooters_raw", "users") }} AS u 
 		ON u.id = t.user_id
