@@ -8,4 +8,16 @@ macros:
     arguments:
       - name: "ts_col"
         type: "string"
-        description: "Столбец Timestamp в формате timestamptz"    
+        description: "Столбец Timestamp в формате timestamptz" 
+  - name: "trips_geom_stat"
+    description: "Количество поездок на гексагон указанного размера"
+    arguments:
+      - name: "trips_table"
+        type: "string"
+        description: "Таблица поездок с геометрическими данными"
+      - name: "geom_col"
+        type: "string"
+        description: "Колонка с геометрическими данными"
+      - name: "grid"
+        type: "integer"
+        description: "Размер сетки гексагона"
