@@ -3,3 +3,9 @@ version: 2
 macros:
   - name: "updated_at"
     description: "Колонки, представляющие время последнего обновления"
+  - name: "date_in_moscow"
+    description: "Преобразует timestamptz в date в тайм-зоне Europe/Moscow"
+    arguments:
+      - name: "ts_col"
+        type: "string"
+        description: "Столбец Timestamp в формате timestamptz"    
