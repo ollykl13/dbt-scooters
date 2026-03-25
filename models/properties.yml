@@ -45,6 +45,8 @@ models:
     description: "События пользователей с дубликатами"
     config:
       materialized: "incremental"  
+      strategy: "merge"
+      unique_key: [ "user_id", "timestamp", "type_id" ]
   - name: "revenue_daily"
     description: "Суммарная дневная выручка"  
     config:
