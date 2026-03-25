@@ -40,7 +40,11 @@ models:
   - name: "trips_users"
     description: "Подготовленные поездки, обогащенные данными пользователей"
     config:
-      materialized: "incremental"      
+      materialized: "incremental"  
+      post-hook: 
+        - "analyze dbt.trips_users"
+        - sql: "vacuum dbt.trips_users" 
+          transaction: false   
   - name: "events_clean"
     description: "События пользователей с дубликатами"
     config:
