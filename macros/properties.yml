@@ -21,3 +21,9 @@ macros:
       - name: "grid"
         type: "integer"
         description: "Размер сетки гексагона"
+  - name: "create_role"
+    description: "Создание роли для пользователей как операции dbt"
+    arguments:
+      - name: "name"
+        type: "string"
+        description: "Название роли"        
