@@ -20,4 +20,8 @@ models:
       +schema: "finance"    
       +grants:
         select: [ "finance" ]
+seeds:
+  dbt_scooters:
+    ops:
+      +schema: "ops"        
            
