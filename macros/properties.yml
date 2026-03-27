@@ -26,4 +26,6 @@ macros:
     arguments:
       - name: "name"
         type: "string"
-        description: "Название роли"        
+        description: "Название роли"    
+  - name: "create_postgis"
+    description: "Активация расширения postgis"
