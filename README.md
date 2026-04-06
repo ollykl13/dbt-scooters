@@ -45,6 +45,7 @@ create extension postgis schema public;
 - `dbt test` - запускает тесты для проверки качества данных
 - `dbt seed` - загружает данные в таблицы из CSV-файлов
 - `dbt build` - основная команда, комбинирует run, test и seed
+- `dbt source freshness` - проверка актуальности данных в источниках
 - `dbt docs generate` - генерирует документацию проекта
 - `dbt docs serve` - запускает локальный сервер для просмотра документации
 

@@ -7,7 +7,14 @@ sources:
     tables:
       - name: "trips"
         description: "Поездки на самокатах"
-
+        loaded_at_field: "finished_at"
+        freshness:
+          warn_after:
+            count: 1
+            period: "day"
+          error_after:
+            count: 3650
+            period: "day"
       - name: "users"
         description: "Пользователи прокатного сервиса"
 
