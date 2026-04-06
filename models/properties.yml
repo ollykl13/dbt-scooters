@@ -17,7 +17,16 @@ sources:
             period: "day"
       - name: "users"
         description: "Пользователи прокатного сервиса"
-
+        columns:
+          - name: "sex"
+            description: "User gender"
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: [ "M", "F" ]
+              - not_null:
+                  config:
+                    severity: "warn"
       - name: "events"
         description: "Сырые события пользователей с дубликатами"
 models:
