@@ -43,6 +43,9 @@ models:
         - columns: ['date']
   - name: "trips_age_daily"
     description: "Дневная статистика по поездкам по возрастам пользователей"
+    data_tests:
+      - unique:
+          column_name: "date::text || age::text"
   - name: "trips_age_daily_stat"
     description: "Аггрегация дневной статистики поездок по возрастам пользователей"
   - name: "trips_geom"
@@ -75,6 +78,11 @@ models:
     description: "Статистика по производителям самокатов"  
   - name: "companies_trips"
     description: "Статистика поездок по производителям самокатов"  
+    columns:
+      - name: "company"
+        description: "Scooters manufacturing company"
+        data_tests:
+          - unique
   - name: "events_full"
     description: "События пользователей обогащенные названиями типов событий"
     config:
