@@ -56,6 +56,9 @@ models:
     data_tests:
       - unique:
           column_name: "date::text || age::text"
+      - unique_key:
+          arguments:
+            columns: [ "date", "age" ]
   - name: "trips_age_daily_stat"
     description: "Аггрегация дневной статистики поездок по возрастам пользователей"
   - name: "trips_geom"
