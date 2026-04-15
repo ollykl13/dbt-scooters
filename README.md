@@ -56,4 +56,10 @@ create extension postgis schema public;
 - `dbt run-operation create_role --args "name: finance"` - создание роли в базе (на примере роли "finance")
 - `dbt run-operation create_postgis` - активация расширения PostGIS для расчета географических моделей
 
+## Каталог данных
+
+Каталог dbt, который автоматически обновляется из ветки `main`:
+
+https://ollykl13.github.io/dbt-scooters/
+
 
