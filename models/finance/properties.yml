@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: "revenue_daily"
-    description: "Суммарная дневная выручка"  
+    description: "Summary daily revenue"
     config:
-      materialized: "incremental"  
-      incremental_strategy: "merge"
-      unique_key: [ "date" ]  
+      materialized: "incremental"
+      strategy: "merge"
+      unique_key: [ "date" ]
       on_schema_change: "append_new_columns"
       full_refresh: false
       contract:
-        enforced: true      
+        enforced: true
     columns:
     - name: "revenue_rub"
       description: "Daily revenue in rubles"
@@ -21,6 +21,33 @@ models:
     - name: "updated_at"
       description: "When row was updated last time"
       data_type: "timestamptz"
+  - name: "revenue_user_monthly"
+    description: "Monthly total revenue by user (ignoring free trips)"
+    data_tests:
+      - unique_key:
+          arguments:
+            columns: [ "user_id", "month" ]
+  - name: "revenue_monthly"
+    description: "Monthly total revenue (ignoring free trips)"
+    data_tests:
+      - unique_key:
+          arguments:
+            columns: [ "month" ]
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "not(users < 1000 or revenue_median < 500)"
+  - name: "revenue_monthly_report"
+    description: "Monthly revenue report"
+    config:
+      materialized: "incremental"
+      strategy: "append"
+      on_schema_change: "append_new_columns"
+      full_refresh: false
+    data_tests:
+      - unique_key:
+          arguments:
+            columns: [ "month" ]
+            
 exposures:
   - name: "financial_dashboard"
     label: "Financial Dashboard"
@@ -30,4 +57,4 @@ exposures:
     depends_on:
       - "ref('revenue_daily')"
     owner:
-      name: "Finance department"      
+      name: "Finance department"
