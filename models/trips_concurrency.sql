@@ -41,8 +41,8 @@ cumsum_cte as (
     -- Integrate increment to get concurrency
     select
         "timestamp",
-        sum(increment) over (order by "timestamp") as concurrency,
-        preserve_row
+        preserve_row,
+        sum(increment) over (order by "timestamp") as concurrency
     from
         sum_cte
 )

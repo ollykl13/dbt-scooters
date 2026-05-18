@@ -5,7 +5,7 @@ SELECT
     ,{{ updated_at() }}
 FROM {{ ref("trips_prep") }} AS t
 LEFT JOIN {{ source("scooters_raw", "users") }} AS u
-    ON u.id = t.user_id
+    ON t.user_id = u.id
 {% if is_incremental() %}
     WHERE
         t.id > (SELECT max(id) FROM {{ this }})
