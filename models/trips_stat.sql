@@ -1,6 +1,6 @@
 SELECT
     count(*) AS trips,
-    count(DISTINCT user_id) AS users,
+    count(DISTINCT user_id) AS "users",
     avg(duration_s) / 60 AS avg_duration_m,
     sum(price_rub) AS revenue_rub,
     count(is_free OR NULL) / cast(count(*) AS real) * 100 AS free_trips_pct,

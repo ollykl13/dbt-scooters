@@ -1,4 +1,4 @@
-with days as (
+with "days" as (
     {{ dbt.date_spine(
         'day',
         "date '2023-06-01'",
@@ -7,7 +7,7 @@ with days as (
 
 final as (
     select cast(date_day as date) as date_day
-    from days
+    from "days"
 )
 
 select *

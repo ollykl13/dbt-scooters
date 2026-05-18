@@ -1,6 +1,6 @@
 SELECT
     ec.*,
-    et.type,
+    et."type",
     date(ec."timestamp") AS "date"
 FROM {{ ref("events_clean") }} AS ec
 LEFT JOIN {{ ref("event_types") }} AS et

@@ -3,7 +3,7 @@ unnest_cte as (
     -- Unnest trip to two rows: start and finish events
     select
         unnest(array[started_at, finished_at]) as "timestamp",
-        unnest(array[1, -1]) as increment
+        unnest(array[1, -1]) as "increment"
     from
         {{ source("scooters_raw", "trips") }}
 ),
@@ -12,7 +12,7 @@ sum_cte as (
     -- Make timestamp unique, group increments
     select
         "timestamp",
-        sum(increment) as increment,
+        sum("increment") as "increment",
         true as preserve_row
     from
         unnest_cte
@@ -21,14 +21,14 @@ sum_cte as (
             "timestamp" > (select max("timestamp") from {{ this }})
         {% else %}
         "timestamp" < (date '2023-06-01' + interval '7' hour) at time zone 'Europe/Moscow'
-    {% endif %}    
+    {% endif %}
     group by
         1
     {% if is_incremental() %}
         union all
         select
             "timestamp",
-            concurrency as increment,
+            concurrency as "increment",
             false as preserve_row
         from
             {{ this }}
@@ -42,7 +42,7 @@ cumsum_cte as (
     select
         "timestamp",
         preserve_row,
-        sum(increment) over (order by "timestamp") as concurrency
+        sum("increment") over (order by "timestamp") as concurrency
     from
         sum_cte
 )
