@@ -1,7 +1,7 @@
-SELECT DISTINCT 
-    first_name
-    , sex
+SELECT DISTINCT
+    first_name,
+    sex
 FROM {{ source("scooters_raw", "users") }}
 WHERE sex IS NOT NULL
-ORDER BY 
+ORDER BY
     1

@@ -10,7 +10,8 @@ with weekly_stat_cte as (
     group by
         1,
         2
-)     
+)
+
 select
     user_id,
     avg(days_per_week) >= 6 as fan,
