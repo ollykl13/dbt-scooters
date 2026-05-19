@@ -10,12 +10,12 @@ dbt_scooters:
       type: postgres
       user: postgres
     prod:
-      dbname: postgres
-      host: localhost
-      pass: postgres
+      dbname: dbt_scooters
+      host: db-stand.inzhenerka-cloud.com
+      pass: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
       port: 5432
       schema: dbt
       threads: 4
       type: postgres
-      user: postgres
+      user: dbt_read
   target: dev  
