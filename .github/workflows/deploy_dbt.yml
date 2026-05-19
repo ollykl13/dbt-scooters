@@ -1,4 +1,4 @@
-name: ? Deploy dbt project to production with Data Catalog
+name:  Deploy dbt project to production with Data Catalog
 
 on:
   push:
