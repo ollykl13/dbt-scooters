@@ -3,7 +3,7 @@ dbt_scooters:
     dev:
       dbname: postgres
       host: localhost
-      pass: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
+      pass: postgres
       port: 5432
       schema: dbt_dev
       threads: 4
@@ -12,7 +12,7 @@ dbt_scooters:
     prod:
       dbname: postgres
       host: localhost
-      pass: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
+      pass: postgres
       port: 5432
       schema: dbt
       threads: 4
