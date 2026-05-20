@@ -10,7 +10,7 @@ select
 from
     {{ ref('users_prep') }} as u
 full outer join {{ ref('users_class_weekly_trips') }} as w
-    on u.id = w.user_id 
+    on u.id = w.user_id
 full outer join {{ ref('users_class_weekly_destination_trips') }} as wd
     using (user_id)
 full outer join {{ ref('users_class_monthly_trips') }} as m
